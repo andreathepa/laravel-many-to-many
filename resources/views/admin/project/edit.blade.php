@@ -29,6 +29,28 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group mt-4">
+                            <div>Seleziona la tecnologia</div>
+                            @foreach ($technologies as $item)
+                                <div class="form-check">
+                                    @if ($errors->any())
+                                        <input type="checkbox" name="technologies[]" value="{{ $item->id }}"
+                                            class="form-check-input"
+                                            {{ in_array($item->id, old('technologies', [])) ? 'checked' : '' }}>
+                                    @else
+                                        <input type="checkbox" name="technologies[]" value="{{ $item->id }}"
+                                            class="form-check-input"
+                                            {{ $project->technologies->contains($item) ? 'checked' : '' }}>
+                                    @endif
+                                    <label class="form-check-label">
+                                        {{ $item->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                            
+                        </div>
+
                         <div>
                             <label class="control-label">Immagine</label>
                             <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image">
