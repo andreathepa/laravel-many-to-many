@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use App\Models\Category;
-use App\Model\Technology;
+use App\Models\Technology;
 
 
 class Project extends Model

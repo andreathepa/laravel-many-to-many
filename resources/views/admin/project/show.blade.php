@@ -15,9 +15,20 @@
 
                 <div>
                     <p>Categoria: {{$project->category->name}}</p>
-    
+                    
+                    <div>
+                        <strong>Tecnologie:</strong>
+                        @if ($project->technologies)
+                            @foreach ($project->technologies as $technology)
+                                <a href="" class="btn btn-sm btn-primary">{{ $technology->name }}</a>
+                            @endforeach
+                        @else
+                            Non sono presenti tecnologie associate al progetto
+                        @endif
+                    </div>
+                    
                     <p>Descrizione: {{$project->content}}</p>
-    
+                    
                     <p>Slug: {{$project->slug}}</p>
 
                 </div>

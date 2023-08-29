@@ -65,6 +65,9 @@ class ProjectController extends Controller
         // $project->category()->associate($request->input('category_id'));
 
         $project->save();
+        if($request->has('technologies')){
+            $project->technologies()->attach($request->technologies);
+        }  
 
         return redirect()->route('admin.project.index');
     }
@@ -78,6 +81,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $categories = Category::all();
+        
 
         return view('admin.project.show', compact('project', 'categories'));
     }
