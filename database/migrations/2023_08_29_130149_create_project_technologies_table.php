@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('project_technologies', function (Blueprint $table) {
-            $table->id();
-            
-            $table->timestamps();
+        Schema::create('project_technology', function (Blueprint $table) {
+
+            // tabella ponte id di tecnologies
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects');
+
+            // tabella ponte id di tecnologies
+            $table->unsignedBigInteger('technology_id');
+            $table->foreign('technology_id')->references('id')->on('technologies');
         });
     }
 
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_technologies');
+        Schema::dropIfExists('project_technology');
     }
 };
