@@ -29,6 +29,15 @@
                         </select>
                     </div>
                     <div class="form-group mt-4">
+                        <p>Seleziona le tecnologie</p>
+                        @foreach ($technologies as $technology)
+                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}"
+                                class="form-check-input"
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label">{{ $technology->name }}</label>
+                        @endforeach
+                    </div>
+                    <div class="form-group mt-4">
                         <label class="control-label">Contenuto</label>
                         <textarea type="text" name="content" id="content" class="form-control" placeholder="Inserisci contenuto">{{ old('content')}}</textarea>
 
